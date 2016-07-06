@@ -1,6 +1,6 @@
 /*
- * Apple System Management Control (SMC) Tool 
- * Copyright (C) 2006 devnull 
+ * Apple System Management Control (SMC) Tool
+ * Copyright (C) 2006 devnull
  *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -43,7 +43,7 @@ UInt32 _strtoul(char *str, int size, int base)
 void _ultostr(char *str, UInt32 val)
 {
     str[0] = '\0';
-    sprintf(str, "%c%c%c%c", 
+    sprintf(str, "%c%c%c%c",
             (unsigned int) val >> 24,
             (unsigned int) val >> 16,
             (unsigned int) val >> 8,
@@ -60,7 +60,7 @@ kern_return_t SMCOpen(void)
     result = IOServiceGetMatchingServices(kIOMasterPortDefault, matchingDictionary, &iterator);
     if (result != kIOReturnSuccess)
     {
-        printf("Error: IOServiceGetMatchingServices() = %08x\n", result);
+        printf("Error: IOServiceGetMatchingServices() = %08x", result);
         return 1;
     }
 
@@ -68,7 +68,7 @@ kern_return_t SMCOpen(void)
     IOObjectRelease(iterator);
     if (device == 0)
     {
-        printf("Error: no SMC found\n");
+        printf("Error: no SMC found");
         return 1;
     }
 
@@ -76,7 +76,7 @@ kern_return_t SMCOpen(void)
     IOObjectRelease(device);
     if (result != kIOReturnSuccess)
     {
-        printf("Error: IOServiceOpen() = %08x\n", result);
+        printf("Error: IOServiceOpen() = %08x", result);
         return 1;
     }
 
@@ -190,7 +190,7 @@ int main(int argc, char *argv[])
       temperature = convertToFahrenheit(temperature);
     }
 
-    printf("%0.1f°%c\n", temperature, scale);
+    printf("%0.1f°%c", temperature, scale);
 
     return 0;
 }
